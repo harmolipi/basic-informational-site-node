@@ -1,0 +1,22 @@
+{
+  "name": "basic-informational-site-node",
+  "version": "1.0.0",
+  "description": "Created as part of [The Odin Project](https://www.theodinproject.com) curriculum.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harmolipi/basic-informational-site-node.git"
+  },
+  "author": "harmolipi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harmolipi/basic-informational-site-node/issues"
+  },
+  "homepage": "https://github.com/harmolipi/basic-informational-site-node#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
