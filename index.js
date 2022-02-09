@@ -1,25 +1,35 @@
-const http = require('http');
-const fs = require('fs');
+const express = require('express');
+const app = express();
+const port = 3000;
 
-const server = http.createServer((req, res) => {
-  console.log('Request received');
-  const filename = req.url === '/' ? './index.html' : `.${req.url}.html`;
-
-  fs.readFile(filename, (err, data) => {
-    if (err) {
-      fs.readFile('./404.html', (err, data) => {
-        if (err) return console.log(err);
-        res.writeHead(404, { 'Content-Type': 'text/html' });
-        res.end(data);
-        payload = data;
-      });
-      return console.log(err);
-    } else {
-      res.writeHead(200, { 'Content-Type': 'text/html' });
-      console.log(`Sending response for ${filename}`);
-      res.end(data);
-    }
-  });
+app.get('/', (_req, res) => {
+  res
+    .status(202)
+    .setHeader('Content-Type', 'text/html')
+    .sendFile(__dirname + '/index.html');
 });
 
-server.listen(8080);
+app.get('/about', (_req, res) => {
+  res
+    .status(202)
+    .setHeader('Content-Type', 'text/html')
+    .sendFile(__dirname + '/about.html');
+});
+
+app.get('/contact-me', (_req, res) => {
+  res
+    .status(202)
+    .setHeader('Content-Type', 'text/html')
+    .sendFile(__dirname + '/contact-me.html');
+});
+
+app.use((req, res, next) => {
+  res
+    .status(404)
+    .setHeader('Content-Type', 'text/html')
+    .sendFile(__dirname + '/404.html');
+});
+
+app.listen(port, () =>
+  console.log(`Basic informational site app listening on port ${port}!`)
+);
